@@ -328,13 +328,13 @@ function App() {
               <div className="grid grid-cols-1 md:grid-cols-2">
                  <div className="p-8 md:p-16 border-b md:border-b-0 md:border-r border-retro-black flex items-center justify-center bg-retro-accent">
                     <div className="w-48 h-48 rounded-full border-2 border-retro-black flex items-center justify-center bg-white animate-spin-slow">
-                       <span className="font-display font-bold text-xl uppercase text-center">Heritage<br/>& Form</span>
+                       <span className="font-display font-bold text-xl uppercase text-center">Relief<br/>& Clay</span>
                     </div>
                  </div>
                  <div className="p-8 md:p-16 flex flex-col justify-center bg-white">
                     <p className="font-mono text-sm uppercase mb-6 tracking-widest text-retro-gray">/// ARTIST STATEMENT</p>
                     <h2 className="font-display font-bold text-2xl md:text-4xl leading-tight mb-8 uppercase">
-                      "To preserve the <span className="text-retro-accent bg-retro-black px-2">memory</span> of our soil. Carving silence into form, echoing the ancient textures of the Indus."
+                      "I belong to the <span className="text-retro-accent bg-retro-black px-2">soil</span>. I attempt to capture the fading textures of our rural heritage—the mud walls of Tharparkar, and the silence of the village."
                     </h2>
                     <button 
                       onClick={() => handleNavigate('portfolio')}

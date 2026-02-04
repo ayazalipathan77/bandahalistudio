@@ -20,15 +20,15 @@ const Hero: React.FC<HeroProps> = ({ featuredArt, onNavigate }) => {
               <span className="font-mono text-xs uppercase">Studio Open</span>
             </div>
             <h1 className="font-display font-extrabold text-5xl md:text-8xl leading-[0.9] tracking-tighter mb-6 break-words">
-              EARTH<br/>
-              <span className="text-retro-accent italic">FORM</span> &<br/>
+              SOUL OF<br/>
+              <span className="text-retro-accent italic">THE SOIL</span> &<br/>
               SILENCE
             </h1>
           </div>
           
           <div className="mt-8 md:mt-0">
             <p className="font-mono text-sm max-w-md border-l-2 border-retro-black pl-4 mb-8">
-              The digital archive of Bandah Ali. Sculpting the heritage of the Indus Valley through relief, texture, and silence.
+              The digital archive of Bandah Ali. Sculpting the heritage of rural Sindh through relief, texture, and vibrant memory.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <button 
@@ -68,7 +68,7 @@ const Hero: React.FC<HeroProps> = ({ featuredArt, onNavigate }) => {
         <div className="whitespace-nowrap animate-marquee flex items-center">
           {[...Array(10)].map((_, i) => (
             <span key={i} className="font-mono font-bold text-white uppercase text-lg mx-8 flex items-center gap-4">
-              New Series: Indus Relief <Star size={12} fill="currentColor" /> VM Art Gallery Exhibition <Star size={12} fill="currentColor" /> Heritage
+              New Series: Textures of Thar <Star size={12} fill="currentColor" /> Clifton Art Gallery Exhibition <Star size={12} fill="currentColor" /> Relief Works
             </span>
           ))}
         </div>

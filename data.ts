@@ -5,28 +5,28 @@ const generateMoreCollections = (): Collection[] => {
   const base = [
     {
       id: 'c1',
-      title: 'Heritage of Stone',
-      description: 'Relief works capturing the ancient textures of Mohenjo-daro and the rugged landscapes of Balochistan.',
-      yearRange: '2022-2024',
-      coverImage: 'https://picsum.photos/seed/bandah1/800/1000'
+      title: 'Textures of Sindh',
+      description: 'Signature relief works capturing the crumbling mud walls, ancient doors, and tactile heritage of rural Sindh.',
+      yearRange: '2020-2024',
+      coverImage: 'https://picsum.photos/seed/bandah_col1/800/1000'
     },
     {
       id: 'c2',
-      title: 'Colors of Sindh',
-      description: 'Vibrant studies of rural life, utilizing traditional Ajrak patterns and earthy tones.',
-      yearRange: '2019-2021',
-      coverImage: 'https://picsum.photos/seed/bandah2/800/1000'
+      title: 'Women of Thar',
+      description: 'A vibrant homage to the resilience and grace of Thari women, focusing on their colorful attire against the desert palette.',
+      yearRange: '2018-2021',
+      coverImage: 'https://picsum.photos/seed/bandah_col2/800/1000'
     },
     {
       id: 'c3',
-      title: 'Sufi Silence',
-      description: 'Abstract figurative works exploring the spiritual movements of the dervish.',
-      yearRange: '2015-2018',
-      coverImage: 'https://picsum.photos/seed/bandah3/800/1000'
+      title: 'Silent Architecture',
+      description: 'Studies of abandoned spaces, wooden Jharokas, and the play of light in the narrow streets of old villages.',
+      yearRange: '2015-2019',
+      coverImage: 'https://picsum.photos/seed/bandah_col3/800/1000'
     }
   ];
   
-  // Duplicate to create 12 items
+  // Duplicate to create items for pagination
   let result: Collection[] = [...base];
   for(let i=0; i<3; i++) {
      result = [...result, ...base.map(item => ({...item, id: item.id + '_dup_' + i, title: item.title + ' ' + (i+2)}))];
@@ -40,95 +40,95 @@ const generateMoreArtworks = (): Artwork[] => {
     const base: Artwork[] = [
       {
         id: 'a1',
-        title: 'Indus Relief I',
-        medium: 'Mixed media on wood panel',
+        title: 'Thari Woman with Matka',
+        medium: 'Relief & Oil on Canvas',
         year: '2024',
-        dimensions: '120 x 150 cm',
+        dimensions: '36 x 48 in',
         status: 'Available',
-        imageUrl: 'https://picsum.photos/seed/bandah_art1/800/1000',
-        collectionId: 'c1',
-        description: 'A tactile exploration of the Indus Valley civilization, merging ancient script with modern texture.'
+        imageUrl: 'https://picsum.photos/seed/bandah_real1/800/1000',
+        collectionId: 'c2',
+        description: 'A textured portrayal of a Thari woman carrying water, emphasizing the vibrant reds and yellows of her dress against the stark desert background. The canvas mimics the texture of sand and fabric.'
       },
       {
         id: 'a2',
-        title: 'Women of Tharparkar',
-        medium: 'Oil on canvas',
+        title: 'The Old Mud Wall',
+        medium: 'Mixed Media Relief',
         year: '2023',
-        dimensions: '90 x 120 cm',
+        dimensions: '48 x 48 in',
         status: 'Sold',
-        imageUrl: 'https://picsum.photos/seed/bandah_art2/800/1200',
-        collectionId: 'c2',
-        description: 'Capturing the resilience and vivid attire of women in the Thar desert.'
+        imageUrl: 'https://picsum.photos/seed/bandah_real2/800/1200',
+        collectionId: 'c1',
+        description: 'Bandah Ali’s signature relief technique brings the crumbling texture of a village mud wall to life, capturing the history etched into the soil.'
       },
       {
         id: 'a3',
-        title: 'The Dervish Turn',
-        medium: 'Acrylic and gold leaf',
-        year: '2018',
-        dimensions: '100 x 100 cm',
+        title: 'Village Courtyard',
+        medium: 'Oil on Canvas',
+        year: '2022',
+        dimensions: '30 x 40 in',
         status: 'Available',
-        imageUrl: 'https://picsum.photos/seed/bandah_art3/1000/1000',
-        collectionId: 'c3',
-        description: 'Motion blurred spiritual dance, emphasizing the loss of self in the divine.'
+        imageUrl: 'https://picsum.photos/seed/bandah_real3/1000/1000',
+        collectionId: 'c1',
+        description: 'A peaceful afternoon in a Sindh village. The play of shadows on the textured ground creates a sense of quiet nostalgia.'
       },
       {
         id: 'a4',
-        title: 'Old Lahore Gate',
-        medium: 'Charcoal and pastel',
+        title: 'Wooden Jharoka',
+        medium: 'Relief on Wood Panel',
         year: '2021',
-        dimensions: '60 x 90 cm',
+        dimensions: '24 x 36 in',
         status: 'Reserved',
-        imageUrl: 'https://picsum.photos/seed/bandah_art4/800/1000',
-        collectionId: 'c2',
-        description: 'Architectural study of the Walled City, focusing on light and shadow in narrow streets.'
+        imageUrl: 'https://picsum.photos/seed/bandah_real4/800/1000',
+        collectionId: 'c3',
+        description: 'Detailed relief work depicting an intricate wooden window (Jharoka), symbolizing the architectural heritage of the region.'
       },
       {
         id: 'a5',
-        title: 'Mountain Silence',
-        medium: 'Relief sculpture on canvas',
-        year: '2024',
-        dimensions: '150 x 200 cm',
+        title: 'Colors of the Desert',
+        medium: 'Acrylic & Relief',
+        year: '2023',
+        dimensions: '40 x 60 in',
         status: 'Available',
-        imageUrl: 'https://picsum.photos/seed/bandah_art5/1200/800',
-        collectionId: 'c1',
-        description: 'Inspired by the textures of the Karakoram range.'
+        imageUrl: 'https://picsum.photos/seed/bandah_real5/1200/800',
+        collectionId: 'c2',
+        description: 'A group of women walking through the dunes. The painting focuses on the rhythm of their movement and the contrast of their clothes against the earth.'
       },
       {
         id: 'a6',
-        title: 'Blue Pottery Study',
-        medium: 'Oil on linen',
+        title: 'Still Life with Pottery',
+        medium: 'Mixed Media',
         year: '2020',
-        dimensions: '40 x 40 cm',
+        dimensions: '24 x 24 in',
         status: 'Available',
-        imageUrl: 'https://picsum.photos/seed/bandah_art6/800/800',
-        collectionId: 'c2',
-        description: 'Detailed study of Multani Kashi Gari patterns.'
+        imageUrl: 'https://picsum.photos/seed/bandah_real6/800/800',
+        collectionId: 'c1',
+        description: 'Traditional clay pots resting against a textured wall. A study of light, shadow, and the tactile nature of everyday objects.'
       },
       {
         id: 'a7',
-        title: 'Echoes of Rumi',
-        medium: 'Ink and wash',
-        year: '2017',
-        dimensions: '90 x 140 cm',
-        status: 'Available',
-        imageUrl: 'https://picsum.photos/seed/bandah_art7/900/1300',
-        collectionId: 'c3',
-        description: 'Calligraphic abstraction based on the poetry of Rumi.'
+        title: 'Waiting by the Door',
+        medium: 'Oil on Canvas',
+        year: '2019',
+        dimensions: '36 x 36 in',
+        status: 'Sold',
+        imageUrl: 'https://picsum.photos/seed/bandah_real7/900/1300',
+        collectionId: 'c2',
+        description: 'A solitary figure waiting by an ancient wooden door. The painting explores themes of longing and the passage of time.'
       },
       {
         id: 'a8',
-        title: 'Harvest Season',
-        medium: 'Oil on canvas',
-        year: '2019',
-        dimensions: '100 x 150 cm',
+        title: 'Harvest in Punjab',
+        medium: 'Oil on Canvas',
+        year: '2018',
+        dimensions: '48 x 60 in',
         status: 'Sold',
-        imageUrl: 'https://picsum.photos/seed/bandah_art8/800/1000',
-        collectionId: 'c2',
-        description: 'Golden wheat fields of Punjab during the harvest.'
+        imageUrl: 'https://picsum.photos/seed/bandah_real8/800/1000',
+        collectionId: 'c1',
+        description: 'While known for Sindh, this piece captures the lush harvest season, showing the artist’s versatility in capturing different rural landscapes.'
       }
     ];
 
-    // Duplicate to create 24 items for pagination
+    // Duplicate to create items for pagination
     let result: Artwork[] = [...base];
     for(let i=0; i<2; i++) {
         result = [...result, ...base.map(item => ({...item, id: item.id + '_dup_' + i, title: item.title + ' ' + (i+2)}))];
@@ -141,33 +141,33 @@ export const ARTWORKS: Artwork[] = generateMoreArtworks();
 export const EXHIBITIONS: Exhibition[] = [
   {
     id: 'e1',
-    title: 'Soil & Soul',
-    gallery: 'VM Art Gallery',
+    title: 'Earthly Echoes',
+    gallery: 'Clifton Art Gallery',
     location: 'Karachi, PK',
-    startDate: '2024-11-10',
-    endDate: '2024-12-15',
-    status: 'Upcoming',
-    imageUrl: 'https://picsum.photos/seed/exhibit_pk1/1200/800'
+    startDate: '2024-02-15',
+    endDate: '2024-02-28',
+    status: 'Past',
+    imageUrl: 'https://picsum.photos/seed/exhibit_ba1/1200/800'
   },
   {
     id: 'e2',
-    title: 'Retrospective',
-    gallery: 'Alhamra Art Center',
-    location: 'Lahore, PK',
-    startDate: '2023-03-05',
-    endDate: '2023-04-20',
+    title: 'Heritage Preserved',
+    gallery: 'ArtChowk Gallery',
+    location: 'Karachi, PK',
+    startDate: '2023-11-10',
+    endDate: '2023-11-25',
     status: 'Past',
-    imageUrl: 'https://picsum.photos/seed/exhibit_pk2/1200/800'
+    imageUrl: 'https://picsum.photos/seed/exhibit_ba2/1200/800'
   },
   {
     id: 'e3',
-    title: 'Eastern Horizons',
-    gallery: 'PNCA',
-    location: 'Islamabad, PK',
-    startDate: '2022-09-01',
-    endDate: '2022-10-15',
+    title: 'Colors of Soil',
+    gallery: 'Grandeur Art Gallery',
+    location: 'Karachi, PK',
+    startDate: '2022-05-01',
+    endDate: '2022-05-15',
     status: 'Past',
-    imageUrl: 'https://picsum.photos/seed/exhibit_pk3/1200/800'
+    imageUrl: 'https://picsum.photos/seed/exhibit_ba3/1200/800'
   }
 ];
 
@@ -175,56 +175,40 @@ export const CLIENT_DIARIES: ClientDiaryEntry[] = [
   {
     id: 'cd1',
     title: 'Private Residence',
-    location: 'DHA Phase 6, Karachi',
-    date: 'October 2024',
-    description: 'Commissioned relief work installed in a double-height living space, complementing the brutalist architecture.',
+    location: 'DHA Phase 8, Karachi',
+    date: 'January 2024',
+    description: 'A large-scale relief painting commissioned for a modern living room, adding organic texture to a minimalist space.',
     imageUrl: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=1000'
   },
   {
     id: 'cd2',
-    title: 'Corporate HQ',
-    location: 'Gulberg, Lahore',
-    date: 'August 2024',
-    description: 'A series of three large-scale oil paintings for the executive boardroom.',
+    title: 'Corporate Lobby',
+    location: 'I.I. Chundrigar Rd, Karachi',
+    date: 'November 2023',
+    description: 'Three textured panels representing the history of Sindh installed in the main reception area.',
     imageUrl: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&q=80&w=1000'
   },
   {
     id: 'cd3',
-    title: 'Modern Villa',
-    location: 'Islamabad',
-    date: 'July 2024',
-    description: 'Minimalist calligraphy piece placed in the entrance foyer.',
+    title: 'Farmhouse Villa',
+    location: 'Gadap Town',
+    date: 'August 2023',
+    description: 'A "Village Courtyard" piece placed in a rustic farmhouse, perfectly complementing the traditional architecture.',
     imageUrl: 'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&q=80&w=1000'
   },
   {
     id: 'cd4',
-    title: 'Penthouse Apartment',
+    title: 'Architectural Office',
     location: 'Clifton, Karachi',
-    date: 'May 2024',
-    description: 'Textured relief panels bringing organic warmth to a contemporary space.',
+    date: 'June 2023',
+    description: 'Selected specifically for the textural depth, this relief work serves as a focal point for the creative studio.',
     imageUrl: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1000'
-  },
-  {
-    id: 'cd5',
-    title: 'Boutique Hotel',
-    location: 'Hunza Valley',
-    date: 'April 2024',
-    description: 'Landscape works reflecting the surrounding mountains installed in the lobby.',
-    imageUrl: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=1000'
-  },
-  {
-    id: 'cd6',
-    title: 'Architectural Studio',
-    location: 'Lahore',
-    date: 'February 2024',
-    description: 'A stark, monochromatic piece selected for the main creative studio.',
-    imageUrl: 'https://images.unsplash.com/photo-1600607687644-c7171b42498b?auto=format&fit=crop&q=80&w=1000'
   }
 ];
 
 export const INSTAGRAM_POSTS: InstagramPost[] = [
-  { id: 'i1', imageUrl: 'https://picsum.photos/seed/insta_pk1/400/400', caption: 'Work in progress. #reliefart', permalink: '#', likes: 542 },
-  { id: 'i2', imageUrl: 'https://picsum.photos/seed/insta_pk2/400/400', caption: 'Sunset at the studio.', permalink: '#', likes: 320 },
-  { id: 'i3', imageUrl: 'https://picsum.photos/seed/insta_pk3/400/400', caption: 'Installation day at VM Gallery.', permalink: '#', likes: 489 },
-  { id: 'i4', imageUrl: 'https://picsum.photos/seed/insta_pk4/400/400', caption: 'Tea and textures.', permalink: '#', likes: 215 },
+  { id: 'i1', imageUrl: 'https://picsum.photos/seed/insta_ba1/400/400', caption: 'Adding the final textures to the mud wall series. #ReliefArt', permalink: '#', likes: 642 },
+  { id: 'i2', imageUrl: 'https://picsum.photos/seed/insta_ba2/400/400', caption: 'The colors of Thar never cease to inspire. #Sindh', permalink: '#', likes: 420 },
+  { id: 'i3', imageUrl: 'https://picsum.photos/seed/insta_ba3/400/400', caption: 'Opening night at Clifton Art Gallery. Thank you for coming!', permalink: '#', likes: 889 },
+  { id: 'i4', imageUrl: 'https://picsum.photos/seed/insta_ba4/400/400', caption: 'Studio vibes. Clay, paint, and silence.', permalink: '#', likes: 315 },
 ];
