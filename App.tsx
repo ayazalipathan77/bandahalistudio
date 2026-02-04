@@ -1,18 +1,29 @@
 import React, { useState, useRef } from 'react';
-import { ARTWORKS, COLLECTIONS, EXHIBITIONS, CLIENT_DIARIES, INSTAGRAM_POSTS } from './data';
-import { Artwork } from './types';
+import { ARTWORKS as INITIAL_ARTWORKS, COLLECTIONS as INITIAL_COLLECTIONS, EXHIBITIONS as INITIAL_EXHIBITIONS, CLIENT_DIARIES as INITIAL_DIARIES, INSTAGRAM_POSTS } from './data';
+import { Artwork, Collection, Exhibition, ClientDiaryEntry } from './types';
 import Navigation from './components/Navigation';
 import Hero from './components/Hero';
 import PortfolioGrid from './components/PortfolioGrid';
 import InquiryModal from './components/InquiryModal';
 import Footer from './components/Footer';
-import { ChevronRight, ArrowRight, X, ArrowUpRight, ChevronLeft } from 'lucide-react';
+import AdminDashboard from './components/AdminDashboard';
+import AdminLogin from './components/AdminLogin';
+import { ChevronRight, ArrowRight, X, ChevronLeft, ArrowUpRight } from 'lucide-react';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
   const [selectedArtwork, setSelectedArtwork] = useState<Artwork | null>(null);
   const [isInquiryOpen, setIsInquiryOpen] = useState(false);
   const [lightboxArtwork, setLightboxArtwork] = useState<Artwork | null>(null);
+
+  // Authentication State
+  const [isAdminAuthenticated, setIsAdminAuthenticated] = useState(false);
+
+  // Data State (Lifted from constants to state for Admin updates)
+  const [artworks, setArtworks] = useState<Artwork[]>(INITIAL_ARTWORKS);
+  const [collections, setCollections] = useState<Collection[]>(INITIAL_COLLECTIONS);
+  const [exhibitions, setExhibitions] = useState<Exhibition[]>(INITIAL_EXHIBITIONS);
+  const [diaries, setDiaries] = useState<ClientDiaryEntry[]>(INITIAL_DIARIES);
 
   // Pagination States
   const [portfolioPage, setPortfolioPage] = useState(1);
@@ -23,10 +34,24 @@ function App() {
   const ITEMS_PER_PAGE_COLLECTIONS = 4;
   const ITEMS_PER_PAGE_DIARY = 4;
 
+  // Admin Handlers
+  const handleAddArtwork = (item: Artwork) => setArtworks([item, ...artworks]);
+  const handleAddCollection = (item: Collection) => setCollections([item, ...collections]);
+  const handleAddExhibition = (item: Exhibition) => setExhibitions([item, ...exhibitions]);
+  const handleAddDiary = (item: ClientDiaryEntry) => setDiaries([item, ...diaries]);
+
+  const handleAdminLogin = () => {
+    setIsAdminAuthenticated(true);
+  };
+
+  const handleAdminLogout = () => {
+    setIsAdminAuthenticated(false);
+    setCurrentPage('home');
+  };
+
   const handleNavigate = (page: string) => {
     setCurrentPage(page);
     window.scrollTo({ top: 0, behavior: 'instant' });
-    // Reset pagination on nav
     setPortfolioPage(1);
     setCollectionPage(1);
     setDiaryPage(1);
@@ -37,12 +62,11 @@ function App() {
   };
 
   const openInquiry = (artwork: Artwork | null) => {
-    setLightboxArtwork(null); // Close lightbox if open
+    setLightboxArtwork(null); 
     setSelectedArtwork(artwork);
     setIsInquiryOpen(true);
   };
 
-  // Pagination Helper Component
   const PaginationControls = ({ 
     currentPage, 
     totalPages, 
@@ -78,11 +102,10 @@ function App() {
     );
   };
 
-  // Scroll Container Logic for Latest Works
   const latestWorksRef = useRef<HTMLDivElement>(null);
   const scrollLatestWorks = (direction: 'left' | 'right') => {
     if (latestWorksRef.current) {
-      const scrollAmount = 320; // Approximately card width
+      const scrollAmount = 320;
       latestWorksRef.current.scrollBy({
         left: direction === 'left' ? -scrollAmount : scrollAmount,
         behavior: 'smooth'
@@ -92,9 +115,24 @@ function App() {
 
   const renderContent = () => {
     switch(currentPage) {
+      case 'admin':
+        if (!isAdminAuthenticated) {
+          return <AdminLogin onLogin={handleAdminLogin} />;
+        }
+        return (
+          <AdminDashboard 
+            collections={collections}
+            onAddArtwork={handleAddArtwork}
+            onAddCollection={handleAddCollection}
+            onAddExhibition={handleAddExhibition}
+            onAddDiary={handleAddDiary}
+            onLogout={handleAdminLogout}
+          />
+        );
+
       case 'portfolio':
-        const totalPortfolioPages = Math.ceil(ARTWORKS.length / ITEMS_PER_PAGE_PORTFOLIO);
-        const currentArtworks = ARTWORKS.slice(
+        const totalPortfolioPages = Math.ceil(artworks.length / ITEMS_PER_PAGE_PORTFOLIO);
+        const currentArtworks = artworks.slice(
           (portfolioPage - 1) * ITEMS_PER_PAGE_PORTFOLIO, 
           portfolioPage * ITEMS_PER_PAGE_PORTFOLIO
         );
@@ -119,8 +157,8 @@ function App() {
         );
       
       case 'collections':
-        const totalCollectionPages = Math.ceil(COLLECTIONS.length / ITEMS_PER_PAGE_COLLECTIONS);
-        const currentCollections = COLLECTIONS.slice(
+        const totalCollectionPages = Math.ceil(collections.length / ITEMS_PER_PAGE_COLLECTIONS);
+        const currentCollections = collections.slice(
           (collectionPage - 1) * ITEMS_PER_PAGE_COLLECTIONS,
           collectionPage * ITEMS_PER_PAGE_COLLECTIONS
         );
@@ -128,7 +166,6 @@ function App() {
         return (
           <div className="pt-20 min-h-screen">
             <div className="border-b border-retro-black p-6 md:p-12">
-               {/* Word break applied to prevent overflow on mobile */}
                <h2 className="font-display font-extrabold text-3xl md:text-7xl uppercase tracking-tighter break-words">Collections</h2>
             </div>
             {currentCollections.map((collection, idx) => (
@@ -167,7 +204,7 @@ function App() {
             </div>
             
             <div className="bg-white">
-              {EXHIBITIONS.map((exhibition) => (
+              {exhibitions.map((exhibition) => (
                 <div key={exhibition.id} className="group border-b border-retro-black flex flex-col md:flex-row hover:bg-retro-accent transition-colors duration-0">
                   <div className="p-6 md:p-8 md:w-1/4 border-b md:border-b-0 md:border-r border-retro-black/20 group-hover:border-retro-black">
                     <span className={`font-mono text-xs uppercase font-bold border-2 border-retro-black px-2 py-1 bg-white inline-block shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]`}>
@@ -198,8 +235,8 @@ function App() {
         );
 
       case 'client-diaries':
-        const totalDiaryPages = Math.ceil(CLIENT_DIARIES.length / ITEMS_PER_PAGE_DIARY);
-        const currentDiaries = CLIENT_DIARIES.slice(
+        const totalDiaryPages = Math.ceil(diaries.length / ITEMS_PER_PAGE_DIARY);
+        const currentDiaries = diaries.slice(
           (diaryPage - 1) * ITEMS_PER_PAGE_DIARY,
           diaryPage * ITEMS_PER_PAGE_DIARY
         );
@@ -242,9 +279,7 @@ function App() {
            <div className="pt-20 min-h-screen flex flex-col">
             <div className="border-b border-retro-black flex-1 flex flex-col md:flex-row">
               <div className="md:w-1/2 p-6 md:p-16 bg-retro-cream border-b md:border-b-0 md:border-r border-retro-black">
-                {/* Header fix for mobile overflow */}
                 <h2 className="font-display font-extrabold text-4xl md:text-6xl uppercase leading-none mb-12 break-words">Contact<br/>The<br/>Studio</h2>
-                
                 <div className="space-y-12 font-mono">
                   <div>
                     <h4 className="text-xs uppercase font-bold mb-2 border-b border-retro-black inline-block">Location</h4>
@@ -286,7 +321,7 @@ function App() {
       default: // Home
         return (
           <>
-            <Hero />
+            <Hero featuredArt={artworks[0]} onNavigate={handleNavigate} />
             
             {/* Intro Section - Brutalist */}
             <section className="border-b border-retro-black">
@@ -339,7 +374,7 @@ function App() {
                  className="flex gap-6 px-6 overflow-x-auto pb-8 no-scrollbar snap-x scroll-smooth"
                  style={{ scrollSnapType: 'x mandatory' }}
                >
-                 {ARTWORKS.slice(0, 8).map(art => (
+                 {artworks.slice(0, 8).map(art => (
                    <div key={art.id} className="min-w-[85vw] md:min-w-[400px] snap-center cursor-pointer group border-2 border-retro-black bg-white p-3 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] transition-all" onClick={() => handleArtworkClick(art)}>
                      <div className="overflow-hidden mb-4 border border-retro-black h-[350px] md:h-[400px]">
                        <img src={art.imageUrl} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300" alt={art.title} />
@@ -394,7 +429,7 @@ function App() {
         {renderContent()}
       </main>
 
-      <Footer />
+      <Footer onNavigate={handleNavigate} />
 
       <InquiryModal 
         artwork={selectedArtwork} 

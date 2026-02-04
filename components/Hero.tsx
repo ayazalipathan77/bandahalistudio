@@ -1,10 +1,13 @@
 import React from 'react';
-import { ARTWORKS } from '../data';
-import { ArrowDown, Star } from 'lucide-react';
+import { Artwork } from '../types';
+import { Star } from 'lucide-react';
 
-const Hero: React.FC = () => {
-  const featuredArt = ARTWORKS[0];
+interface HeroProps {
+  featuredArt: Artwork;
+  onNavigate: (page: string) => void;
+}
 
+const Hero: React.FC<HeroProps> = ({ featuredArt, onNavigate }) => {
   return (
     <section className="relative min-h-[calc(100vh-5rem)] flex flex-col border-b border-retro-black">
       <div className="flex-1 flex flex-col md:flex-row">
@@ -28,10 +31,16 @@ const Hero: React.FC = () => {
               The digital archive of Bandah Ali. Sculpting the heritage of the Indus Valley through relief, texture, and silence.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <button className="bg-retro-black text-retro-cream px-8 py-4 font-mono text-xs uppercase border border-retro-black hover:bg-retro-accent hover:border-retro-accent transition-colors">
+              <button 
+                onClick={() => onNavigate('portfolio')}
+                className="bg-retro-black text-retro-cream px-8 py-4 font-mono text-xs uppercase border border-retro-black hover:bg-retro-accent hover:border-retro-accent transition-colors"
+              >
                 View Portfolio
               </button>
-              <button className="px-8 py-4 font-mono text-xs uppercase border border-retro-black hover:bg-white transition-colors">
+              <button 
+                onClick={() => onNavigate('contact')}
+                className="px-8 py-4 font-mono text-xs uppercase border border-retro-black hover:bg-white transition-colors"
+              >
                 Inquire
               </button>
             </div>

@@ -1,7 +1,11 @@
 import React from 'react';
-import { Instagram, Twitter, Mail, ArrowRight } from 'lucide-react';
+import { Instagram, Twitter, Mail, ArrowRight, Lock } from 'lucide-react';
 
-const Footer: React.FC = () => {
+interface FooterProps {
+  onNavigate: (page: string) => void;
+}
+
+const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   return (
     <footer className="border-t border-retro-black bg-retro-black text-retro-cream">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
@@ -19,11 +23,11 @@ const Footer: React.FC = () => {
         {/* Links */}
         <div className="p-8 md:p-12 border-b md:border-b-0 md:border-r border-retro-cream/20 flex flex-col justify-between">
           <h4 className="font-mono text-xs uppercase mb-8 text-retro-accent">Navigation</h4>
-          <ul className="space-y-4 font-display font-bold text-xl">
-             <li><a href="#" className="hover:text-retro-accent transition-colors">Portfolio</a></li>
-             <li><a href="#" className="hover:text-retro-accent transition-colors">Exhibitions</a></li>
-             <li><a href="#" className="hover:text-retro-accent transition-colors">Journal</a></li>
-             <li><a href="#" className="hover:text-retro-accent transition-colors">Contact</a></li>
+          <ul className="space-y-4 font-display font-bold text-xl cursor-pointer">
+             <li><a onClick={() => onNavigate('portfolio')} className="hover:text-retro-accent transition-colors block">Portfolio</a></li>
+             <li><a onClick={() => onNavigate('exhibitions')} className="hover:text-retro-accent transition-colors block">Exhibitions</a></li>
+             <li><a onClick={() => onNavigate('client-diaries')} className="hover:text-retro-accent transition-colors block">Client Diaries</a></li>
+             <li><a onClick={() => onNavigate('contact')} className="hover:text-retro-accent transition-colors block">Contact</a></li>
           </ul>
         </div>
 
@@ -60,8 +64,16 @@ const Footer: React.FC = () => {
       </div>
       
       <div className="border-t border-retro-cream/20 p-4 flex justify-between items-center font-mono text-[10px] uppercase">
-        <span>© 2024 Bandah Ali Studio</span>
-        <span>Karachi, PK</span>
+        <div className="flex gap-4">
+           <span>© 2024 Bandah Ali Studio</span>
+           <span>Karachi, PK</span>
+        </div>
+        <button 
+          onClick={() => onNavigate('admin')}
+          className="flex items-center gap-1 opacity-50 hover:opacity-100 hover:text-retro-accent transition-all"
+        >
+          <Lock size={10} /> Admin Access
+        </button>
       </div>
     </footer>
   );
