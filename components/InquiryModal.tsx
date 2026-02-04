@@ -100,7 +100,7 @@ const InquiryModal: React.FC<InquiryModalProps> = ({ artwork, isOpen, onClose })
                   type="text" 
                   required
                   placeholder="NAME"
-                  className="w-full bg-white border-2 border-retro-black py-3 px-4 focus:outline-none focus:bg-yellow-50 font-mono text-sm rounded-none"
+                  className="w-full bg-white border-2 border-retro-black py-3 px-4 focus:outline-none focus:bg-green-50 font-mono text-sm rounded-none"
                   value={formData.name}
                   onChange={e => setFormData({...formData, name: e.target.value})}
                 />
@@ -112,7 +112,7 @@ const InquiryModal: React.FC<InquiryModalProps> = ({ artwork, isOpen, onClose })
                   type="email" 
                   required
                   placeholder="EMAIL"
-                  className="w-full bg-white border-2 border-retro-black py-3 px-4 focus:outline-none focus:bg-yellow-50 font-mono text-sm rounded-none"
+                  className="w-full bg-white border-2 border-retro-black py-3 px-4 focus:outline-none focus:bg-green-50 font-mono text-sm rounded-none"
                   value={formData.email}
                   onChange={e => setFormData({...formData, email: e.target.value})}
                 />
@@ -123,7 +123,7 @@ const InquiryModal: React.FC<InquiryModalProps> = ({ artwork, isOpen, onClose })
                 <textarea 
                   required
                   rows={4}
-                  className="w-full bg-white border-2 border-retro-black py-3 px-4 focus:outline-none focus:bg-yellow-50 font-mono text-sm resize-none rounded-none"
+                  className="w-full bg-white border-2 border-retro-black py-3 px-4 focus:outline-none focus:bg-green-50 font-mono text-sm resize-none rounded-none"
                   value={formData.message}
                   onChange={e => setFormData({...formData, message: e.target.value})}
                 />

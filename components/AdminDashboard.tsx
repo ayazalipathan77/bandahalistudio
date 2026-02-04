@@ -7,7 +7,7 @@ const Input = ({ label, ...props }: any) => (
   <div className="mb-4">
     <label className="block font-mono text-xs uppercase font-bold mb-2">{label}</label>
     <input 
-      className="w-full border-2 border-retro-black p-3 font-mono text-sm focus:outline-none focus:bg-yellow-50 rounded-none shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
+      className="w-full border-2 border-retro-black p-3 font-mono text-sm focus:outline-none focus:bg-green-50 rounded-none shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
       {...props}
     />
   </div>
@@ -17,7 +17,7 @@ const TextArea = ({ label, ...props }: any) => (
   <div className="mb-4">
     <label className="block font-mono text-xs uppercase font-bold mb-2">{label}</label>
     <textarea 
-      className="w-full border-2 border-retro-black p-3 font-mono text-sm focus:outline-none focus:bg-yellow-50 rounded-none shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
+      className="w-full border-2 border-retro-black p-3 font-mono text-sm focus:outline-none focus:bg-green-50 rounded-none shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
       rows={4}
       {...props}
     />
@@ -145,7 +145,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
                  <div className="mb-4">
                     <label className="block font-mono text-xs uppercase font-bold mb-2">Collection</label>
                     <select 
-                      className="w-full border-2 border-retro-black p-3 font-mono text-sm focus:outline-none focus:bg-yellow-50 rounded-none"
+                      className="w-full border-2 border-retro-black p-3 font-mono text-sm focus:outline-none focus:bg-green-50 rounded-none"
                       value={artworkForm.collectionId || ''}
                       onChange={(e) => setArtworkForm({...artworkForm, collectionId: e.target.value})}
                     >
@@ -156,7 +156,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
                  <div className="mb-4">
                     <label className="block font-mono text-xs uppercase font-bold mb-2">Status</label>
                     <select 
-                      className="w-full border-2 border-retro-black p-3 font-mono text-sm focus:outline-none focus:bg-yellow-50 rounded-none"
+                      className="w-full border-2 border-retro-black p-3 font-mono text-sm focus:outline-none focus:bg-green-50 rounded-none"
                       value={artworkForm.status || 'Available'}
                       onChange={(e) => setArtworkForm({...artworkForm, status: e.target.value as any})}
                     >
@@ -193,7 +193,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
                   <div className="mb-4">
                     <label className="block font-mono text-xs uppercase font-bold mb-2">Status</label>
                     <select 
-                      className="w-full border-2 border-retro-black p-3 font-mono text-sm focus:outline-none focus:bg-yellow-50 rounded-none"
+                      className="w-full border-2 border-retro-black p-3 font-mono text-sm focus:outline-none focus:bg-green-50 rounded-none"
                       value={exhibitionForm.status || 'Upcoming'}
                       onChange={(e) => setExhibitionForm({...exhibitionForm, status: e.target.value as any})}
                     >

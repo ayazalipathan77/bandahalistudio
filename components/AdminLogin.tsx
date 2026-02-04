@@ -38,7 +38,7 @@ const AdminLogin: React.FC<AdminLoginProps> = ({ onLogin }) => {
               type="text" 
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              className="w-full border-2 border-retro-black p-3 font-mono text-sm focus:outline-none focus:bg-yellow-50 rounded-none"
+              className="w-full border-2 border-retro-black p-3 font-mono text-sm focus:outline-none focus:bg-green-50 rounded-none"
               placeholder="admin"
             />
           </div>
@@ -48,7 +48,7 @@ const AdminLogin: React.FC<AdminLoginProps> = ({ onLogin }) => {
               type="password" 
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full border-2 border-retro-black p-3 font-mono text-sm focus:outline-none focus:bg-yellow-50 rounded-none"
+              className="w-full border-2 border-retro-black p-3 font-mono text-sm focus:outline-none focus:bg-green-50 rounded-none"
               placeholder="••••••••"
             />
           </div>

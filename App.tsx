@@ -299,15 +299,15 @@ function App() {
                  <form className="space-y-6">
                     <div>
                       <label className="block font-mono text-xs uppercase font-bold mb-2">Name</label>
-                      <input type="text" className="w-full border-2 border-retro-black p-4 font-mono focus:outline-none focus:bg-yellow-50 rounded-none shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]" placeholder="YOUR NAME" />
+                      <input type="text" className="w-full border-2 border-retro-black p-4 font-mono focus:outline-none focus:bg-green-50 rounded-none shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]" placeholder="YOUR NAME" />
                     </div>
                     <div>
                       <label className="block font-mono text-xs uppercase font-bold mb-2">Email</label>
-                      <input type="email" className="w-full border-2 border-retro-black p-4 font-mono focus:outline-none focus:bg-yellow-50 rounded-none shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]" placeholder="YOUR EMAIL" />
+                      <input type="email" className="w-full border-2 border-retro-black p-4 font-mono focus:outline-none focus:bg-green-50 rounded-none shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]" placeholder="YOUR EMAIL" />
                     </div>
                      <div>
                       <label className="block font-mono text-xs uppercase font-bold mb-2">Message</label>
-                      <textarea rows={4} className="w-full border-2 border-retro-black p-4 font-mono focus:outline-none focus:bg-yellow-50 rounded-none shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]" placeholder="YOUR MESSAGE"></textarea>
+                      <textarea rows={4} className="w-full border-2 border-retro-black p-4 font-mono focus:outline-none focus:bg-green-50 rounded-none shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]" placeholder="YOUR MESSAGE"></textarea>
                     </div>
                     <button type="button" onClick={() => setIsInquiryOpen(true)} className="w-full bg-retro-black text-white py-4 font-mono text-sm uppercase font-bold hover:bg-retro-accent hover:text-black transition-colors border-2 border-transparent hover:border-retro-black shadow-[4px_4px_0px_0px_rgba(0,0,0,0.5)] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px]">
                       Send Message
